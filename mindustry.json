@@ -1,0 +1,58 @@
+{
+  "pufferd": {
+    "type": "mindustry",
+    "display": "Mindustry - Vanilla",
+    "install": {
+      "commands": [
+        {
+          "type": "download",
+          "files": "https://github.com/Anuken/Mindustry/releases/download/v${version}/server-release.jar"
+        },
+        {
+          "commands": [
+            "chmod +x ${rootdir}/server-release.jar",
+            "mkdir config/",
+            "mkdir config/saves",
+            "echo \"Upload your save file and then start the server! :D\""
+          ],
+          "type": "command"
+        }
+      ]
+    },
+    "run": {
+      "stopCode": 2,
+      "pre": [],
+      "post": [],
+      "arguments": [
+          "-jar",
+          "server-release.jar",
+          "load",
+          "${savegame}"
+      ],
+      "program": "java"
+    },
+    "data": {
+      "port": {
+        "value": "6567",
+        "required": true,
+        "desc": "What port to bind the server to",
+        "display": "Port",
+        "internal": false
+      },
+      "version": {
+        "value": "104.6",
+        "required": true,
+        "desc": "Server Version",
+        "display": "Server Version (Set this to the latest server version)",
+        "internal": false
+      },
+      "savegame": {
+        "value": "slot-1",
+        "required": false,
+        "desc": "Default savegame",
+        "display": "Default savegame file to load when starting",
+        "internal": false
+      }
+    }
+  }
+}
